@@ -17,7 +17,6 @@ import uz.paynet.payload.RegisterDto;
 import uz.paynet.repository.UserRepository;
 import uz.paynet.security.JwtProvider;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -112,17 +111,9 @@ public class AuthService implements UserDetailsService {
     }
 
     public ApiResponse getOnlineUser() {
-        List<User> onlineUser = new ArrayList<>();
-        List<User> userList = userRepository.findAll();
-        for (User user : userList) {
-            if (!user.isOnline()) {
-                continue;
-            }
-            onlineUser.add(user);
-        }
+        List<User> onlineUser = userRepository.getOnlineUser();
         if (!onlineUser.isEmpty())
             return new ApiResponse("Online userlar listi: ", true, onlineUser);
-
         return new ApiResponse("hozircha online userlar mavjud emas", false);
     }
 }

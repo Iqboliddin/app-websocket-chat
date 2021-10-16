@@ -7,9 +7,9 @@ localhost:8080/api/chat/signup ___ @ReqBody(String email, String password, Strin
 localhost:8080/api/chat/login ___ @ReqBody(String email, String password) ___ met.Post
 
 4. chatga qoshilish uchun header qismda tokenni qoshib ("Authorization") quyidagiga oting va connect qiling
-ws://localhost:8080/chat
+ws://localhost:8080/api/chat
 
 5. Online userlar royxatini olish (tokenni header qismga qoyish kk ("Authorization"))
-localhost:8080/chat/getOnlineUser
+localhost:8080/api/chat/getOnlineUser
 
 6. emailga habar yuborish uchun config.SecurityConfig dagi JavaMailSender sozlamarida ozingizning username va passwordingizni kiritishingiz kerak boladi
